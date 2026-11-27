@@ -6,12 +6,12 @@ in the cell lines those papers covered, with one symmetric protocol.
 
 ## Software
 * uv project in this directory, Python 3.13.
-* `pydreg[gpu]==1.0.0` (CuPy backend on the cbsubscb P100s).
+* `pydreg[gpu]==1.0.0` (CuPy backend; the original runs used Tesla P100 GPUs).
 * `pyPINTS[fast,plots]==1.3.0` (PyPI upstream). `[plots]` is required because `--debug` writes the per-strand
   candidate GTF.
 * Interval arithmetic: `bioframe`. bigWig reads: `figwig`. Our code uses no pybedtools or pyBigWig. pyPINTS still pulls
   in pyBigWig internally.
-* Site programs: `/programs/kentUtils/bin/{liftOver,bigWigToBedGraph}`.
+* kentUtils (`liftOver`, `bigWigToBedGraph`, `twoBitToFa`, …), found or downloaded by `scripts/00_setup_tools.sh`.
 
 ## Phase 1 libraries (`config/libraries.tsv`, all hg19 bigWigs)
 
@@ -85,13 +85,14 @@ in the cell lines those papers covered, with one symmetric protocol.
 * `default_covered_by_full`: the fraction of PINTS's own bidirectional calls covered by the rebuilt candidate pairs.
   This validates the reconstruction.
 
-## Run order (cbsubscb, account `danko_0001`)
+## Run order
+Site settings (Slurm account, partitions, scratch) go in `config/site.env`; see README.md.
 ```bash
 cd pydreg-pints-bench
-bash scripts/00_fetch_data.sh 2>&1 | tee logs/00_fetch_data.log   # login node, ~1.5 GB downloads
-bash slurm/sub.sh slurm/00_gpu_smoke.sbatch                               # check CuPy on the P100 first
-bash slurm/submit_phase1.sh                                       # labels + pydreg(GPU) + PINTS -> evaluate
-.venv/bin/python scripts/04_summarize.py                          # tables in results/summary/
+bash scripts/00_fetch_all.sh                    # login node with internet; all inputs -> data/ (~4 GB)
+bash slurm/sub.sh slurm/00_gpu_smoke.sbatch     # check CuPy sees the GPU first
+bash slurm/submit_phase1.sh                     # labels + pydreg (GPU) + PINTS -> evaluate
+.venv/bin/python scripts/04_summarize.py        # tables in results/summary/
 ```
 * Logs go to `$PPB_SLURM_LOGS` (default `logs/slurm/`; see `config/site.env.example`).
 * Calls go to `results/calls/<lib>/{pydreg,pints}/`.

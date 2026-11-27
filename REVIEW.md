@@ -129,9 +129,9 @@ none.
 |---|---|---|
 | K562 PRO-seq, GRO-seq, and GRO-cap from the same cells (Core et al. 2014) | GEO GSE60456 | hg19 |
 | Jurkat ChRO-seq (Chu et al. 2018) | GEO GSE117832 | — |
-| K562 ENCODE PRO-cap PINTS pairs | already local: `/home2/ayh8/data/k562/` | — |
-| K562 ATAC peaks and nonpeaks (ENCSR868FGK) | already local: `/home2/ayh8/data/k562/` | — |
-| ENCODE cCREs | already local | — |
+| K562 PRO-cap and its PINTS pairs | ENCODE ENCSR220XSM | hg38 |
+| K562 ATAC peaks and nonpeaks | ENCODE ENCSR868FGK | hg38 |
+| ENCODE cCREs | ENCODE SCREEN registry | hg38 |
 
 **Truth sets, all independent of the run-on library under test:**
 
