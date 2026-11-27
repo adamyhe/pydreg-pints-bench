@@ -1,0 +1,194 @@
+lib	tool	rank	flavour	family	variant	seed	metric	value
+Jurkat_CAGE	pydreg	score	full	calls		-1	n_calls	27368.0
+Jurkat_CAGE	pydreg	score	full	calls		-1	width_median	230.0
+Jurkat_CAGE	pydreg	score	full	calls		-1	width_q25	140.0
+Jurkat_CAGE	pydreg	score	full	calls		-1	width_q75	320.0
+Jurkat_CAGE	pydreg	score	default	calls		-1	n_calls	10711.0
+Jurkat_CAGE	pydreg	score	default	calls		-1	width_median	320.0
+Jurkat_CAGE	pydreg	score	default	calls		-1	width_q25	260.0
+Jurkat_CAGE	pydreg	score	default	calls		-1	width_q75	400.0
+Jurkat_CAGE	pydreg	logp	full	calls		-1	n_calls	27368.0
+Jurkat_CAGE	pydreg	logp	full	calls		-1	width_median	230.0
+Jurkat_CAGE	pydreg	logp	full	calls		-1	width_q25	140.0
+Jurkat_CAGE	pydreg	logp	full	calls		-1	width_q75	320.0
+Jurkat_CAGE	pydreg	logp	default	calls		-1	n_calls	10711.0
+Jurkat_CAGE	pydreg	logp	default	calls		-1	width_median	320.0
+Jurkat_CAGE	pydreg	logp	default	calls		-1	width_q25	260.0
+Jurkat_CAGE	pydreg	logp	default	calls		-1	width_q75	400.0
+Jurkat_CAGE	pints	logp	full	calls		-1	n_calls	120269.0
+Jurkat_CAGE	pints	logp	full	calls		-1	width_median	144.0
+Jurkat_CAGE	pints	logp	full	calls		-1	width_q25	67.0
+Jurkat_CAGE	pints	logp	full	calls		-1	width_q75	227.0
+Jurkat_CAGE	pints	logp	default	calls		-1	n_calls	4771.0
+Jurkat_CAGE	pints	logp	default	calls		-1	width_median	209.0
+Jurkat_CAGE	pints	logp	default	calls		-1	width_q25	146.0
+Jurkat_CAGE	pints	logp	default	calls		-1	width_q75	287.0
+Jurkat_CAGE	pints	logp	check	calls		-1	default_covered_by_full	1.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	15613.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.734420124776514
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.4196442339872084
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.5575481970153078
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.13259668508287292
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.1963921091398194
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.4622430026260168
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.5383974892717607
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.40995829780580945
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.3922372381989368
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.03699255344703339
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.5782813975448536
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	10711.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	15613.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.731885078090102
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.3696104428235598
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.5575481970153078
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.13259668508287292
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.14667264459104593
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.439441491065138
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.5327611605713187
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.3852080896326794
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.3922372381989368
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.03699255344703339
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.5782813975448536
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	10711.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	15613.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.5802554258578487
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.30756624806311217
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.3495804778069557
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.25584997556470385
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.2257082384726015
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.29376265144292685
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.3077939043790154
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.2703896471786926
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.20374047268302056
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.0076204991426938465
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.7756644720799805
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	4771.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	15613.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.7576664504491356
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.49384661835639093
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.5575481970153078
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.04716752352313512
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.18465381412925128
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.5588634694845402
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.5820811816169329
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.4572991872151578
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.3922372381989368
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.02780337569114366
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.7275751455387905
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	10711.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	15613.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.7572603731340906
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.4794611682446204
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.5575481970153078
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.04716752352313512
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.16870556587459168
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.5588634694845402
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.5820811816169329
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.4532384140647075
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.3922372381989368
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.02780337569114366
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.7275751455387905
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	10711.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	15613.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.6599573646680351
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.3647843000574436
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.3495804778069557
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.0335750315258512
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.19012788488225624
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.36063474533468615
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.39428554821180795
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.32528867972721603
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.20374047268302056
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.010730914734697837
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.7823413674372848
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	4771.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	2600.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.4736068090051871
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.020619063509728572
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.07846153846153846
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.13259668508287292
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.007307692307692308
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.03769230769230769
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.065
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.035504303734235736
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.02653846153846154
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.03699255344703339
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.015214994487320837
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	10711.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	2600.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.473434409548307
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.020643439001296844
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.07846153846153846
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.13259668508287292
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.008076923076923077
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.03538461538461538
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.06269230769230769
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.03391206861507623
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.02653846153846154
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.03699255344703339
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.015214994487320837
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	10711.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	2600.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	120727.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.413084005171235
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.020061533644081468
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.07884615384615384
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.25584997556470385
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.0038461538461538464
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.027621333702268956
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.04048951818507748
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.023683278729817653
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.002692307692307692
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.0076204991426938465
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.007551240560949299
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	4771.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	2600.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.5149935129498497
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.030818964009791214
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.07846153846153846
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.04716752352313512
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.006538461538461538
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.08120098750349954
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.12955883026647325
+Jurkat_CAGE	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.0669203932993669
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.02653846153846154
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.02780337569114366
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.029212531752751906
+Jurkat_CAGE	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	10711.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	2600.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.5150896784549721
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.0311543323455617
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.07846153846153846
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.04716752352313512
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.01
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.08120098750349954
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.12955883026647325
+Jurkat_CAGE	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.06788204835059174
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.02653846153846154
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.02780337569114366
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.029212531752751906
+Jurkat_CAGE	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	10711.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	2600.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	82472.0
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.5221995786915092
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.032377489119408846
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.07884615384615384
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.0335750315258512
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.0015384615384615385
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.09450171260805741
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.14215951720763334
+Jurkat_CAGE	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.08227795948074283
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.002692307692307692
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.010730914734697837
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.007847533632286996
+Jurkat_CAGE	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	4771.0

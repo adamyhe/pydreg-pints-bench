@@ -1,0 +1,15 @@
+# environments / caches
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# large inputs (rebuilt by scripts/00*_fetch*.sh and 01*_build_labels*.py)
+data/
+# upstream clones (dREG, PINTS_analysis); see BENCHMARK.md for sources
+external/
+logs/
+
+# large outputs: caller output (11 GB) and per-element score dumps
+results/calls/
+results/bootstrap/*/element_scores.tsv.gz

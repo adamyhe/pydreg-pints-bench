@@ -1,0 +1,26 @@
+[project]
+name = "pydreg-pints-bench"
+version = "0.1.0"
+description = "Assay-matched benchmark of pydreg vs PINTS on run-on and TSS data"
+requires-python = ">=3.12"
+dependencies = [
+    "bioframe>=0.8.0",
+    "numpy>=2.5.5",
+    "openpyxl>=3.1",
+    "pandas>=3.1.1",
+    "pydreg[gpu]==1.0.0",
+    "pypints[fast,plots]==1.3.0",
+    "scikit-learn>=1.9.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ppbench"]

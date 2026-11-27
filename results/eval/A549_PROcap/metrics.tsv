@@ -1,0 +1,194 @@
+lib	tool	rank	flavour	family	variant	seed	metric	value
+A549_PROcap	pydreg	score	full	calls		-1	n_calls	80094.0
+A549_PROcap	pydreg	score	full	calls		-1	width_median	250.0
+A549_PROcap	pydreg	score	full	calls		-1	width_q25	150.0
+A549_PROcap	pydreg	score	full	calls		-1	width_q75	380.0
+A549_PROcap	pydreg	score	default	calls		-1	n_calls	36957.0
+A549_PROcap	pydreg	score	default	calls		-1	width_median	380.0
+A549_PROcap	pydreg	score	default	calls		-1	width_q25	300.0
+A549_PROcap	pydreg	score	default	calls		-1	width_q75	470.0
+A549_PROcap	pydreg	logp	full	calls		-1	n_calls	80094.0
+A549_PROcap	pydreg	logp	full	calls		-1	width_median	250.0
+A549_PROcap	pydreg	logp	full	calls		-1	width_q25	150.0
+A549_PROcap	pydreg	logp	full	calls		-1	width_q75	380.0
+A549_PROcap	pydreg	logp	default	calls		-1	n_calls	36957.0
+A549_PROcap	pydreg	logp	default	calls		-1	width_median	380.0
+A549_PROcap	pydreg	logp	default	calls		-1	width_q25	300.0
+A549_PROcap	pydreg	logp	default	calls		-1	width_q75	470.0
+A549_PROcap	pints	logp	full	calls		-1	n_calls	635882.0
+A549_PROcap	pints	logp	full	calls		-1	width_median	159.0
+A549_PROcap	pints	logp	full	calls		-1	width_q25	82.0
+A549_PROcap	pints	logp	full	calls		-1	width_q75	245.0
+A549_PROcap	pints	logp	default	calls		-1	n_calls	17734.0
+A549_PROcap	pints	logp	default	calls		-1	width_median	230.0
+A549_PROcap	pints	logp	default	calls		-1	width_q25	153.0
+A549_PROcap	pints	logp	default	calls		-1	width_q75	318.0
+A549_PROcap	pints	logp	check	calls		-1	default_covered_by_full	1.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	83074.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	200000.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.6139431424091776
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.4573506971084237
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.3460769915978525
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.1454
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.1315333317283386
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.2556877001227821
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.3180176709921275
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.23612990737174086
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.2631509256807184
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.053955
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.6695148842337376
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	36957.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	83074.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	200000.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.6128801393035126
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.4330489449325621
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.3460769915978525
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.1454
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.07104509232732263
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.2557719623468233
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.3161157522209115
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.2260277978067747
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.2631509256807184
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.053955
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.6695148842337376
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	36957.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_pos	83074.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	n_neg	200000.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auroc	0.5900579029840864
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	auprc	0.470679126691483
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pos_called	0.3775188386258035
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	neg_called	0.26038
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.01	0.16699644293039942
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.05	0.2686116717348282
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	tpr_at_fpr0.1	0.3148416320548441
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|quiet	0	pauroc_fpr0.1	0.25181701252860367
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_tpr	0.15844909357921852
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_fpr	0.008655
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_precision	0.8837787028333557
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|quiet	0	op_n_calls	17734.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	83074.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.650555430776485
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.7169880160109734
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.3460769915978525
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.052914441737086766
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.1798155861039555
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.3391795266870501
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.37858760232667893
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.30191009729479457
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.2631509256807184
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.025143864378661413
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.937596500257334
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	36957.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	83074.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.6501723163927379
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.7124258738459218
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.3460769915978525
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.052914441737086766
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.16852444808243253
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.33769891903604016
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.37858760232667893
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.29807895345732277
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.2631509256807184
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.025143864378661413
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.937596500257334
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	36957.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_pos	83074.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auroc	0.6613359363171202
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	auprc	0.7268834953196849
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pos_called	0.3775188386258035
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	neg_called	0.06701574299687214
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.01	0.19798381794915007
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.05	0.3405461479327493
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	tpr_at_fpr0.1	0.39952572507887596
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	pauroc_fpr0.1	0.3154936003162606
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_tpr	0.15844909357921852
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_fpr	0.0059792282302521295
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_precision	0.9743874454067658
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac|dhs_unmarked	0	op_n_calls	17734.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	49656.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	200000.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.5079626501329145
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.2168815691519556
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.1545432576123731
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.1454
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.024911390365716126
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.08707910423715161
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.13172627678427581
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.08090396427420656
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.09150958595134526
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.053955
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.29631561786762306
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	36957.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	49656.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	200000.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.507742839938779
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.21287966790550678
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.1545432576123731
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.1454
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.017520541324311262
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.08637425487352988
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.1305582406959884
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.0788642112735621
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.09150958595134526
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.053955
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.29631561786762306
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	36957.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_pos	49656.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	n_neg	200000.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auroc	0.4707504713428387
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	auprc	0.21759829206652267
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pos_called	0.18326083454164652
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	neg_called	0.26038
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.01	0.03168423755437409
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.05	0.09052190575584802
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	tpr_at_fpr0.1	0.12575338153453577
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|quiet	0	pauroc_fpr0.1	0.08363016155320953
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_tpr	0.028697438376027066
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_fpr	0.008655
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_precision	0.4515209125475285
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|quiet	0	op_n_calls	17734.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	49656.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.551446885604462
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.5095102703831734
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.1545432576123731
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.052914441737086766
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.04378121475753182
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.147978089254068
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.19657621055432306
+A549_PROcap	pydreg	score	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.12987590855016587
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.09150958595134526
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.025143864378661413
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.7574595765960993
+A549_PROcap	pydreg	score	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	36957.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	49656.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.5514045033584495
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.5072379851262654
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.1545432576123731
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.052914441737086766
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.040941678749798614
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.14761559529563395
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.19657621055432306
+A549_PROcap	pydreg	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.12945208609004208
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.09150958595134526
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.025143864378661413
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.7574595765960993
+A549_PROcap	pydreg	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	36957.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_pos	49656.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	n_neg	57867.0
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auroc	0.5591912362584504
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	auprc	0.5149488234327853
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pos_called	0.18326083454164652
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	neg_called	0.06701574299687214
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.01	0.04651657248020225
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.05	0.14981349147767242
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	tpr_at_fpr0.1	0.2121354209409197
+A549_PROcap	pints	logp	full	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	pauroc_fpr0.1	0.1373029683503648
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_tpr	0.028697438376027066
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_fpr	0.0059792282302521295
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_precision	0.8046301524562394
+A549_PROcap	pints	logp	default	dreg_aux	dhs_h3k27ac_distal|dhs_unmarked	0	op_n_calls	17734.0
