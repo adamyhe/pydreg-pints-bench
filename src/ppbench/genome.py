@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import gzip
 import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -17,7 +18,32 @@ import pandas as pd
 PROJ = Path(os.environ.get("PPBENCH_PROJ", Path(__file__).resolve().parents[2]))
 DATA = PROJ / "data"
 REF = DATA / "ref"
-LIFTOVER = os.environ.get("LIFTOVER_BIN", "/programs/kentUtils/bin/liftOver")
+
+
+def _site_env() -> dict:
+    """config/site.env (KEY=VALUE, shell-style) overlaid by the process environment."""
+    env, f = {}, PROJ / "config" / "site.env"
+    if f.exists():
+        for line in f.read_text().splitlines():
+            line = line.split("#", 1)[0].strip()
+            if "=" in line:
+                k, v = line.split("=", 1)
+                env[k.strip()] = os.path.expandvars(v.strip().strip("'\""))
+    env.update({k: v for k, v in os.environ.items() if v})
+    return env
+
+
+SITE = _site_env()
+
+
+def kent(tool: str) -> str:
+    """Path to a kentUtils binary: $KENT_BIN, else PATH, else /programs/kentUtils/bin."""
+    if SITE.get("KENT_BIN"):
+        return str(Path(SITE["KENT_BIN"]) / tool)
+    return shutil.which(tool) or f"/programs/kentUtils/bin/{tool}"
+
+
+LIFTOVER = SITE.get("LIFTOVER_BIN") or kent("liftOver")
 CHROMS = [f"chr{i}" for i in range(1, 23)] + ["chrX"]
 BED3 = ["chrom", "start", "end"]
 

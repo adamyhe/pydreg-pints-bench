@@ -1,7 +1,5 @@
 #!/bin/bash -l
 # pydreg on each phase-1 library (one GPU per task; at most 2 tasks at once = the node's 2 P100s).
-#SBATCH --clusters=cbsubscb
-#SBATCH --account=danko_0001
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:tP100:1
 #SBATCH --nodes=1
@@ -10,9 +8,8 @@
 #SBATCH --time=24:00:00
 #SBATCH --array=1-5%2
 #SBATCH --job-name=ppb_pydreg
-#SBATCH --output=/home/ayh8/slurm/ppb_pydreg.%A_%a.out
 
-source /home2/ayh8/pydreg_pints/slurm/common.sh
+source "${PPB_PROJ:-$SLURM_SUBMIT_DIR}/slurm/common.sh"   # submit with slurm/sub.sh
 make_scratch
 LIB=$(lib_for_task "$SLURM_ARRAY_TASK_ID")
 echo "lib=$LIB host=$(hostname) gpu=$CUDA_VISIBLE_DEVICES"

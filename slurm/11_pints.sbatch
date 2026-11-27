@@ -1,8 +1,6 @@
 #!/bin/bash -l
 # PINTS on each phase-1 library. --debug writes *_peaks.gtf with every per-strand candidate and its
 # p-value (needed to sweep PINTS over its full range, as the PINTS paper's own ROC did).
-#SBATCH --clusters=cbsubscb
-#SBATCH --account=danko_0001
 #SBATCH --partition=regular,long7,long30
 #SBATCH --nodes=1
 #SBATCH --ntasks=16
@@ -10,9 +8,8 @@
 #SBATCH --time=24:00:00
 #SBATCH --array=1-5
 #SBATCH --job-name=ppb_pints
-#SBATCH --output=/home/ayh8/slurm/ppb_pints.%A_%a.out
 
-source /home2/ayh8/pydreg_pints/slurm/common.sh
+source "${PPB_PROJ:-$SLURM_SUBMIT_DIR}/slurm/common.sh"   # submit with slurm/sub.sh
 make_scratch
 LIB=$(lib_for_task "$SLURM_ARRAY_TASK_ID")
 EXP=$(lib_field "$LIB" pints_exp_type)

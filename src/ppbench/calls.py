@@ -21,7 +21,7 @@ import bioframe as bf
 import numpy as np
 import pandas as pd
 
-from .genome import BED3, CHROMS, PROJ, _open, read_bed
+from .genome import BED3, CHROMS, PROJ, _open, kent, read_bed
 
 RESULTS = PROJ / "results"
 CLOSE = 300  # PINTS --close-threshold default and the PINTS-paper pairing distance
@@ -64,7 +64,7 @@ def load_infp(lib: str) -> pd.DataFrame:
     import os, subprocess, tempfile
     bw = pydreg_dir(lib) / f"{lib}.dREG.infp.bw"
     with tempfile.NamedTemporaryFile(suffix=".bg", dir=os.environ.get("TMPDIR")) as tf:
-        subprocess.run(["/programs/kentUtils/bin/bigWigToBedGraph", str(bw), tf.name], check=True)
+        subprocess.run([kent("bigWigToBedGraph"), str(bw), tf.name], check=True)
         df = pd.read_csv(tf.name, sep="\t", header=None, names=BED3 + ["v"], usecols=[0, 1, 2])
     return _finish(df)
 

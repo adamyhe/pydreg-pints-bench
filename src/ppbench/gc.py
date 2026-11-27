@@ -8,9 +8,9 @@ import tempfile
 import numpy as np
 import pandas as pd
 
-from .genome import BED3, REF
+from .genome import BED3, REF, kent
 
-TWOBIT2FA = "/programs/kentUtils/bin/twoBitToFa"
+TWOBIT2FA = kent("twoBitToFa")
 
 
 def seq_stats(df: pd.DataFrame, genome: str) -> pd.DataFrame:

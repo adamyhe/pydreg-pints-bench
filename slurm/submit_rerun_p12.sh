@@ -3,8 +3,7 @@
 # (adds GC-matched and CpG-island-split conditions), then the report.
 # Optional arg: colon-separated job IDs to wait for first (e.g. the phase-3 report job).
 set -euo pipefail
-cd /home2/ayh8/pydreg_pints
-p() { sbatch --parsable "$@" | cut -d';' -f1; }
+p() { bash "$(dirname "${BASH_SOURCE[0]}")/sub.sh" "$@"; }
 DEP=${1:+--dependency=afterany:$1}
 E=$(p --export=ALL,PPB_PHASE=all --array=1-10 $DEP slurm/30_evaluate.sbatch)
 B=$(p --export=ALL,PPB_PHASE=all --array=1-15 $DEP slurm/40_bootstrap.sbatch)

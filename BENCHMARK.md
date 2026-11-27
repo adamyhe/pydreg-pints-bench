@@ -87,13 +87,13 @@ in the cell lines those papers covered, with one symmetric protocol.
 
 ## Run order (cbsubscb, account `danko_0001`)
 ```bash
-cd /home2/ayh8/pydreg_pints
+cd pydreg-pints-bench
 bash scripts/00_fetch_data.sh 2>&1 | tee logs/00_fetch_data.log   # login node, ~1.5 GB downloads
-sbatch slurm/00_gpu_smoke.sbatch                                  # check CuPy on the P100 first
+bash slurm/sub.sh slurm/00_gpu_smoke.sbatch                               # check CuPy on the P100 first
 bash slurm/submit_phase1.sh                                       # labels + pydreg(GPU) + PINTS -> evaluate
 .venv/bin/python scripts/04_summarize.py                          # tables in results/summary/
 ```
-* Logs go to `/home/ayh8/slurm/`.
+* Logs go to `$PPB_SLURM_LOGS` (default `logs/slurm/`; see `config/site.env.example`).
 * Calls go to `results/calls/<lib>/{pydreg,pints}/`.
 * Metrics go to `results/eval/<lib>/`.
 * `uv run pytest tests` runs the unit tests on synthetic data and on the released label tables.

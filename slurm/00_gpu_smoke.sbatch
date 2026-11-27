@@ -1,7 +1,5 @@
 #!/bin/bash -l
 # Quick check that CuPy sees the P100 and pydreg selects the cupy backend. Run this first.
-#SBATCH --clusters=cbsubscb
-#SBATCH --account=danko_0001
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:tP100:1
 #SBATCH --nodes=1
@@ -9,9 +7,8 @@
 #SBATCH --mem=8G
 #SBATCH --time=00:20:00
 #SBATCH --job-name=ppb_gpu_smoke
-#SBATCH --output=/home/ayh8/slurm/ppb_gpu_smoke.%j.out
 
-source /home2/ayh8/pydreg_pints/slurm/common.sh
+source "${PPB_PROJ:-$SLURM_SUBMIT_DIR}/slurm/common.sh"   # submit with slurm/sub.sh
 nvidia-smi
 "$VENV/python" - <<'EOF'
 import cupy as cp

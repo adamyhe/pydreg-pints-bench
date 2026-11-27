@@ -7,7 +7,8 @@ set -euo pipefail
 
 PROJ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DATA="$PROJ/data"
-KENT=/programs/kentUtils/bin
+source "$PROJ/scripts/site.sh"
+KENT="$KENT_BIN"
 ENC=https://www.encodeproject.org/files
 mkdir -p "$DATA"/{libs/raw,ref/dhs,ref/aux} "$PROJ/logs"
 TMP="${TMPDIR:-$DATA/libs/raw}"

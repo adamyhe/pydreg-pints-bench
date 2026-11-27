@@ -30,13 +30,13 @@ import bioframe as bf
 import numpy as np
 import pandas as pd
 
-from .genome import BED3, DATA, REF, clean, genome_view, liftover, merge, overlaps_any, read_bed, write_bed
+from .genome import BED3, DATA, REF, clean, genome_view, kent, liftover, merge, overlaps_any, read_bed, write_bed
 
 LABELS = DATA / "labels"
 BUILT = LABELS / "built"
 SUPP = LABELS / "pints_supp" / "41587_2022_1211_MOESM3_ESM.xlsx"
 GTF = REF / "gencode.v24.annotation.gtf.gz"
-BW2BG = "/programs/kentUtils/bin/bigWigToBedGraph"
+BW2BG = kent("bigWigToBedGraph")
 
 
 # ------------------------------------------------------------------ helpers
@@ -187,12 +187,13 @@ def build_dreg(manifest: dict) -> None:
 
     # validate the negative-rebuild recipe on K562 (original GRO-cap HMM, then GRO-cap-signal proxy)
     k_dhs = [dhs / "K562_Duke.hg19.narrowPeak.gz", dhs / "K562_UW.hg19.narrowPeak.gz"]
-    hmm = read_bed(REF / "K562_grocap_hmm.hg19.bed")[BED3]
-    rebuilt_hmm = _dreg_negative(k_dhs, hmm, k_pos)
+    hmm_f = REF / "K562_grocap_hmm.hg19.bed"  # not public; optional (config/site.env DREG_K562_HMM_BED)
     proxy = _nonzero_intervals(DATA / "libs" / "K562_GROcap.pl.bw", 250)
     proxy = merge(bf.sort_bedframe(pd.concat([proxy, _nonzero_intervals(DATA / "libs" / "K562_GROcap.mn.bw", 250)])))
     rebuilt_proxy = _dreg_negative(k_dhs, proxy, k_pos)
-    manifest["check/k562_negative_rebuilt_hmm_jaccard"] = round(_jaccard(k_neg, rebuilt_hmm), 4)
+    if hmm_f.exists():
+        rebuilt_hmm = _dreg_negative(k_dhs, read_bed(hmm_f)[BED3], k_pos)
+        manifest["check/k562_negative_rebuilt_hmm_jaccard"] = round(_jaccard(k_neg, rebuilt_hmm), 4)
     manifest["check/k562_negative_rebuilt_grocap_signal_jaccard"] = round(_jaccard(k_neg, rebuilt_proxy), 4)
 
     g_pos = merge(bf.sort_bedframe(read_bed(hub / "GM12878.positive.bed.gz")[BED3]))
@@ -444,7 +445,7 @@ def build_dhs_tss_silent(manifest: dict, cells=None) -> None:
             continue
         dhs = _dhs_intersect(dfiles) if len(dfiles) == 2 else merge(bf.sort_bedframe(read_bed(dfiles[0])[BED3]))
         sig = [_nonzero_intervals(b, SILENT_PAD) for b in bws]
-        if extra is not None:
+        if extra is not None and Path(extra).exists():
             e = read_bed(extra)[BED3]
             sig.append(e.assign(start=(e.start - SILENT_PAD).clip(lower=0), end=e.end + SILENT_PAD))
         sig = merge(bf.sort_bedframe(pd.concat(sig)))

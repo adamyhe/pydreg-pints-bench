@@ -5,6 +5,7 @@
 set -euo pipefail
 
 PROJ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$PROJ/scripts/site.sh"
 DATA="$PROJ/data"
 mkdir -p "$DATA"/{libs,ref/dhs,ref/cage,ref/rna,labels/dreg_ftp,labels/pints_supp} "$PROJ/logs"
 
@@ -54,22 +55,30 @@ for f in k562.positive.bed.gz k562.negative.bed.gz K562.positive.bed.gz GM12878.
     get "ftp://cbsuftp.tc.cornell.edu/danko/hub/TROGDOR/$f" "$DATA/labels/dreg_ftp/$f"
 done
 # DHS used for dREG negatives (Duke + UW, hg19). K562 from UCSC (the files dREG's scripts name);
-# GM12878 UW = the merged file dREG's scripts name (lab storage, read-only copy, approved);
+# GM12878 UW = the merged file dREG's scripts name (not public; $GM12878_UW_DHS_BED in config/site.env),
+#   else the public UCSC UW DNase replicates 1+2 concatenated (labels then differ slightly from ours);
 # GM12878 Duke from UCSC.
 ENCDCC=$UCSC/hg19/encodeDCC
 get $ENCDCC/wgEncodeOpenChromDnase/wgEncodeOpenChromDnaseK562PkV2.narrowPeak.gz   "$DATA/ref/dhs/K562_Duke.hg19.narrowPeak.gz"
 get $ENCDCC/wgEncodeUwDgf/wgEncodeUwDgfK562Pk.narrowPeak.gz                      "$DATA/ref/dhs/K562_UW.hg19.narrowPeak.gz"
 get $ENCDCC/wgEncodeOpenChromDnase/wgEncodeOpenChromDnaseGm12878Pk.narrowPeak.gz "$DATA/ref/dhs/GM12878_Duke.hg19.narrowPeak.gz"
 if [[ ! -s "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz" ]]; then
-    gzip -c /fs/cbsudanko/storage/data/hg19/gm12878/dnase/uw.merge.narrowPeak.bed > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
+    if [[ -n "$GM12878_UW_DHS_BED" ]]; then
+        gzip -c "$GM12878_UW_DHS_BED" > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
+    else
+        echo "GM12878_UW_DHS_BED not set: using public UCSC UW DNase GM12878 reps 1+2"
+        for r in 1 2; do get $ENCDCC/wgEncodeUwDnase/wgEncodeUwDnaseGm12878PkRep$r.narrowPeak.gz "$DATA/ref/dhs/GM12878_UW_rep$r.hg19.narrowPeak.gz"; done
+        zcat "$DATA"/ref/dhs/GM12878_UW_rep{1,2}.hg19.narrowPeak.gz | LC_ALL=C sort -k1,1 -k2,2n | gzip -c > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
+    fi
 fi
 # GM12878 GRO-cap (stands in for the GRO-cap HMM calls when rebuilding GM12878 negatives)
 get $GEO/GSM1480nnn/GSM1480323/suppl/GSM1480323_GM12878_GROcap_wTAP_plus.bigWig  "$DATA/ref/GM12878_GROcap.pl.bw"
 get $GEO/GSM1480nnn/GSM1480323/suppl/GSM1480323_GM12878_GROcap_wTAP_minus.bigWig "$DATA/ref/GM12878_GROcap.mn.bw"
-# K562 GRO-cap HMM calls used by dREG (lab storage, read-only copy, approved) -- for the
-# negative-rebuild validation on K562
+# K562 GRO-cap HMM calls used by dREG (not public; $DREG_K562_HMM_BED in config/site.env). Used for the
+# K562 negative-rebuild check and, with GRO-cap signal, the K562 TSS-silent DHS negatives. Optional.
 if [[ ! -s "$DATA/ref/K562_grocap_hmm.hg19.bed" ]]; then
-    cp /fs/cbsudanko/storage/archive/DANKO-2016/train_holdout_svm/hg19.k562.new_hmm2b.post2.bed "$DATA/ref/K562_grocap_hmm.hg19.bed"
+    if [[ -n "$DREG_K562_HMM_BED" ]]; then cp "$DREG_K562_HMM_BED" "$DATA/ref/K562_grocap_hmm.hg19.bed"
+    else echo "DREG_K562_HMM_BED not set: skipping (K562 silent negatives use GRO-cap signal only)"; fi
 fi
 
 # ---- dREG auxiliary labels (Wang 2019 Fig 1B; Danko 2015 Fig 1b): ENCODE hg19 Broad H3K27ac + ChromHMM ----

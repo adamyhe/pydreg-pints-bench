@@ -1,8 +1,8 @@
 # Sourced by the sbatch scripts. Resolves the project, venv and the array task's library.
 set -euo pipefail
-PROJ=/home2/ayh8/pydreg_pints
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/scripts/site.sh"
+PROJ="$PPB_PROJ"
 VENV="$PROJ/.venv/bin"
-export PPBENCH_PROJ="$PROJ"
 export PYTHONNOUSERSITE=1
 
 # lib for this array index (1-based over the rows of config/libraries.tsv in phase $PPB_PHASE:
@@ -18,8 +18,8 @@ lib_field() {  # lib_field LIB COLUMN_NAME
 }
 
 make_scratch() {
-    SCRATCH=/workdir/$USER/$SLURM_JOB_ID
-    mkdir -p "$SCRATCH"
+    SCRATCH="$PPB_SCRATCH_ROOT/$SLURM_JOB_ID"
+    mkdir -p "$SCRATCH" 2>/dev/null || { SCRATCH="${TMPDIR:-/tmp}/ppb.$SLURM_JOB_ID"; mkdir -p "$SCRATCH"; }
     export TMPDIR="$SCRATCH/tmp"
     mkdir -p "$TMPDIR"
     trap 'rm -rf "$SCRATCH"' EXIT

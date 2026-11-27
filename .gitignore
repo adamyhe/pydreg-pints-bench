@@ -13,3 +13,4 @@ logs/
 # large outputs: caller output (11 GB) and per-element score dumps
 results/calls/
 results/bootstrap/*/element_scores.tsv.gz
+config/site.env

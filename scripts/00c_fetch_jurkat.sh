@@ -12,7 +12,8 @@ set -euo pipefail
 
 PROJ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DATA="$PROJ/data"
-KENT=/programs/kentUtils/bin
+source "$PROJ/scripts/site.sh"
+KENT="$KENT_BIN"
 mkdir -p "$DATA"/{libs/raw,ref/dhs,ref/aux,ref/cage} "$PROJ/logs"
 TMP="${TMPDIR:-$DATA/libs/raw}"
 
