@@ -55,8 +55,9 @@ for f in k562.positive.bed.gz k562.negative.bed.gz K562.positive.bed.gz GM12878.
     get "ftp://cbsuftp.tc.cornell.edu/danko/hub/TROGDOR/$f" "$DATA/labels/dreg_ftp/$f"
 done
 # DHS used for dREG negatives (Duke + UW, hg19). K562 from UCSC (the files dREG's scripts name);
-# GM12878 UW = the merged file dREG's scripts name (not public; $GM12878_UW_DHS_BED in config/site.env),
-#   else the public UCSC UW DNase replicates 1+2 concatenated (labels then differ slightly from ours);
+# GM12878 UW = the merged file dREG's scripts name (uw.merge.narrowPeak.bed). It is exactly the merged union of
+#   the public UCSC UW DNase GM12878 replicates 1+2 (checked 2026-11-26: identical intervals), so it is rebuilt
+#   from those unless $GM12878_UW_DHS_BED points at a local copy;
 # GM12878 Duke from UCSC.
 ENCDCC=$UCSC/hg19/encodeDCC
 get $ENCDCC/wgEncodeOpenChromDnase/wgEncodeOpenChromDnaseK562PkV2.narrowPeak.gz   "$DATA/ref/dhs/K562_Duke.hg19.narrowPeak.gz"
@@ -66,9 +67,10 @@ if [[ ! -s "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz" ]]; then
     if [[ -n "$GM12878_UW_DHS_BED" ]]; then
         gzip -c "$GM12878_UW_DHS_BED" > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
     else
-        echo "GM12878_UW_DHS_BED not set: using public UCSC UW DNase GM12878 reps 1+2"
         for r in 1 2; do get $ENCDCC/wgEncodeUwDnase/wgEncodeUwDnaseGm12878PkRep$r.narrowPeak.gz "$DATA/ref/dhs/GM12878_UW_rep$r.hg19.narrowPeak.gz"; done
-        zcat "$DATA"/ref/dhs/GM12878_UW_rep{1,2}.hg19.narrowPeak.gz | LC_ALL=C sort -k1,1 -k2,2n | gzip -c > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
+        zcat "$DATA"/ref/dhs/GM12878_UW_rep{1,2}.hg19.narrowPeak.gz | cut -f1-3 | LC_ALL=C sort -k1,1 -k2,2n \
+            | awk 'BEGIN{OFS="\t"} $1!=c || $2>e {if (c!="") print c,s,e; c=$1; s=$2; e=$3; next} {if ($3>e) e=$3} END{print c,s,e}' \
+            | gzip -c > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
     fi
 fi
 # GM12878 GRO-cap (stands in for the GRO-cap HMM calls when rebuilding GM12878 negatives)

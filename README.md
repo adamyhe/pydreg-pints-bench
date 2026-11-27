@@ -90,16 +90,16 @@ Every setting is optional. Python reads environment variables first, then `confi
 The sbatch headers carry the partitions and GPU type of the original cluster (Cornell BioHPC cbsubscb). Flags in
 `PPB_SBATCH_ARGS` and `PPB_GPU_SBATCH_ARGS`, or flags passed to `slurm/sub.sh`, override them.
 
-### Non-public inputs
+### Inputs from Danko lab storage
 
-Two dREG-paper files were read from Danko lab storage. They are not publicly downloadable.
+Two dREG-paper files were read from Danko lab storage. Only the first is actually unavailable publicly.
 
 | Setting | File | What it feeds | Fallback when unset |
 |---|---|---|---|
 | `DREG_K562_HMM_BED` | `hg19.k562.new_hmm2b.post2.bed`: K562 GRO-cap HMM TREs | A manifest check that the dREG negative-rebuild recipe reproduces the released K562 negatives; also part of the TSS signal defining K562 TSS-silent DHS negatives | The check is skipped; K562 TSS-silent negatives use GRO-cap signal only |
-| `GM12878_UW_DHS_BED` | `uw.merge.narrowPeak.bed`: GM12878 UW DNase peaks, merged | Every GM12878 DHS-based label: rebuilt dREG negatives, H3K27ac/DHS labels, quiet negatives, TSS-silent DHSs, and the restriction of HiDRA negatives to accessible sites | Public UCSC UW DNase GM12878 replicates 1 + 2 (`wgEncodeUwDnaseGm12878PkRep{1,2}`), concatenated |
+| `GM12878_UW_DHS_BED` | `uw.merge.narrowPeak.bed`: GM12878 UW DNase peaks | Every GM12878 DHS-based label: rebuilt dREG negatives, H3K27ac/DHS labels, quiet negatives, TSS-silent DHSs, and the restriction of HiDRA negatives to accessible sites | Rebuilt from the public UCSC UW DNase GM12878 replicates 1 + 2 (`wgEncodeUwDnaseGm12878PkRep{1,2}`). It is exactly their merged union: all 164,206 intervals match |
 
-With the fallbacks, the GM12878 and K562 TSS-silent label sets differ slightly from ours, so the numbers won't match
+Without the K562 HMM file, only the K562 TSS-silent DHS negatives change slightly, so those rows won't match
 `results/` exactly. All other inputs are public: ENCODE, GEO, UCSC, FANTOM5, ChIP-Atlas, the dREG data hub, and the
 PINTS paper's supplementary tables.
 
