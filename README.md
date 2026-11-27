@@ -24,8 +24,8 @@ vs non-CpG-island positives.
 ## Results
 
 * **[RESULTS_SUMMARY.md](RESULTS_SUMMARY.md)** has the consolidated findings and the run-time table.
-* **[docs/pydreg_vs_pints.html](docs/pydreg_vs_pints.html)** is the same results as an interactive page with
-  per-library charts. It is self-contained and can be served from any static host.
+* **[adamyhe.github.io/pydreg-pints-bench](https://adamyhe.github.io/pydreg-pints-bench/)** is the same results as
+  an interactive page with per-library charts. Its source is `docs/index.html`.
 * **[results/summary/report.md](results/summary/report.md)** has the full per-library tables: every label set,
   condition and metric, with intervals.
 * [REVIEW.md](REVIEW.md) reviews the PINTS paper's comparison. [BENCHMARK.md](BENCHMARK.md) gives the design and
