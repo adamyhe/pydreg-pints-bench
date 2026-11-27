@@ -39,7 +39,7 @@ In short:
   (non-CpG-island) elements.
 * **TSS assays:** PINTS is better.
 * **Transcribed vs untranscribed DHSs:** the tools are close, with PINTS modestly ahead on enhancer-like sites.
-* **Speed and memory:** PINTS is faster overall. pydreg needs a GPU but far less memory.
+* **Speed and memory:** PINTS is faster overall. pydreg needs a GPU but far less memory (8 vs 80 GB on the deepest library).
 
 ## Layout
 
@@ -67,7 +67,8 @@ Not in the repo, rebuilt by the scripts:
 * [uv](https://docs.astral.sh/uv/) and Python ≥ 3.12. Run `uv sync` to install pydreg[gpu], pyPINTS and the
   analysis stack into `.venv/`.
 * An NVIDIA GPU with CUDA for pydreg's CuPy backend. The original runs used one Tesla P100 per library.
-* About 64 GB of RAM for PINTS on the deepest libraries. It peaked at 58 GB on K562 PRO-seq G1.
+* About 96 GB of RAM for PINTS with `--debug` (as run here) on the deepest libraries: its footprint peaked at
+  80 GB on K562 PRO-seq G1, or 42 GB without `--debug`. pydreg needs under 10 GB.
 * kentUtils: `bigWigToBedGraph`, `bedGraphToBigWig`, `bigWigMerge`, `bigWigInfo`, `twoBitToFa`, `liftOver`.
   If they aren't on `PATH` or at `KENT_BIN`, `scripts/00_setup_tools.sh` downloads UCSC's static Linux x86_64
   builds into `tools/kent/`. These are free for academic and non-profit use; commercial use needs a UCSC licence.

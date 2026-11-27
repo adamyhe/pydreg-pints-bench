@@ -63,25 +63,45 @@ These supersede the AUROC-based conclusions in RESULTS_PHASE1.md and RESULTS_PHA
 
 ## Run time
 PINTS is faster overall: about 2.9 h against 4.6 h for all 15 libraries. On the deepest run-on libraries the two are
-about even. On TSS assays PINTS is 4–9× faster. pydreg uses far less memory: PINTS grows with depth, up to 58 GB.
+about even. On TSS assays PINTS is 4–9× faster. pydreg uses far less memory (see Memory below).
 
-| Library | pydreg wall | PINTS wall | pydreg RAM | PINTS RAM |
-|---|---|---|---|---|
-| K562 PRO-seq G1 (deepest) | 44 min | 46 min | 8 GB | 58 GB |
-| K562 PRO-seq G7 | 16 | 18 | 5 | 26 |
-| GM12878 GRO-seq | 36 | 22 | 7 | 32 |
-| Jurkat leChRO-seq | 17 | 19 | 5 | 34 |
-| Jurkat PRO-seq / ChRO-seq 1 / 2 | 15 / 15 / 17 | 13 / 7 / 12 | 5 | 17–25 |
-| K562 GRO-seq G2 | 15 | 10 | 5 | 16 |
-| HCT116 PRO-seq | 18 | 7 | 5 | 15 |
-| A549 PRO-seq | 10 | 4 | 4 | 9 |
-| TSS assays (PRO-cap ×3, GRO-cap, CAGE) | 6–24 | 0.6–4 | 3–4 | 2–8 |
-| **Total, 15 libraries** | **4.6 h** | **2.9 h** | | |
+| Library | pydreg wall | PINTS wall |
+|---|---|---|
+| K562 PRO-seq G1 (deepest) | 44 min | 46 min |
+| K562 PRO-seq G7 | 16 | 18 |
+| GM12878 GRO-seq | 36 | 22 |
+| Jurkat leChRO-seq | 17 | 19 |
+| Jurkat PRO-seq / ChRO-seq 1 / 2 | 15 / 15 / 17 | 13 / 7 / 12 |
+| K562 GRO-seq G2 | 15 | 10 |
+| HCT116 PRO-seq | 18 | 7 |
+| A549 PRO-seq | 10 | 4 |
+| TSS assays (PRO-cap ×3, GRO-cap, CAGE) | 6–24 | 0.6–4 |
+| **Total, 15 libraries** | **4.6 h** | **2.9 h** |
 
-* Measurement: wall time and peak resident memory from `/usr/bin/time -v` in the caller jobs (Slurm 4144326/7,
+* Measurement: wall time from `/usr/bin/time -v` in the caller jobs (Slurm 4144326/7,
   4151159/60, 4151191/2), one run each on shared cbsubscb nodes.
 * Hardware: pydreg (`--backend cupy`) on one Tesla P100 with 16 CPUs; PINTS on 16 CPU threads.
 * Scope: pydreg's time covers scoring every candidate site plus peak calling. CPU-only pydreg was not timed.
+
+### Memory
+Peak footprint is PSS summed over the process tree, so pages shared between PINTS's forked workers count once. It
+was sampled every second with `scripts/08_memprof.py` (Slurm 4151254, 4151260; results in `results/memprof/`).
+
+| Library | pydreg | PINTS `--debug`, 16 threads (as benchmarked) | PINTS, 16 threads | PINTS `--debug`, 4 threads |
+|---|---|---|---|---|
+| K562 PRO-seq G1 (deepest, ~190M reads/strand) | 8.4 GB | 80 GB | 42 GB | 63 GB |
+| K562 PRO-seq G7 (~14M reads/strand) | 6.4 GB | 30 GB | 18 GB | 31 GB |
+
+* PINTS's memory grows with depth and through the run: on G1 it reaches about 31 GB by the end of the genome scan,
+  then peaks in the last few minutes while results are assembled.
+* `--debug` roughly doubles the peak (G1: 80 vs 42 GB). The benchmark needs it to score every PINTS candidate; routine
+  runs don't use it.
+* Fewer threads barely help. With 4 threads G1's peak is 63 GB, because one process alone holds 58 GB, and the run
+  takes twice as long (93 vs 48 min).
+* pydreg's footprint is 6–8 GB. Slurm's MaxRSS reported up to 90 GB for it because it counts shared pages once per
+  worker.
+* The earlier `/usr/bin/time -v` figures show only the largest single process, so they understate PINTS (58 of
+  80 GB on G1).
 
 ## Caveats
 * One library per cell and assay, except Jurkat ChRO-seq ×2. Batch effects are comparable to the assay effects

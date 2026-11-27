@@ -1,0 +1,25 @@
+{
+ "cmd": [
+  "/home2/ayh8/pydreg_pints/.venv/bin/pydreg",
+  "--backend",
+  "cupy",
+  "-p",
+  "16",
+  "--no-progress",
+  "K562_PROseq_G1.pl.bw",
+  "K562_PROseq_G1.mn.bw",
+  "out/K562_PROseq_G1"
+ ],
+ "exit_code": 0,
+ "wall_s": 2781.6,
+ "peak_pss_gb": 8.396,
+ "peak_rss_sum_gb": 90.136,
+ "peak_rss_max_gb": 8.155,
+ "peak_nproc": 17,
+ "t_peak_nproc": 1862.8,
+ "t_peak_pss_gb": 2769.1,
+ "t_peak_rss_sum_gb": 1869.0,
+ "t_peak_rss_max_gb": 1827.3,
+ "cgroup_memory_peak_gb": 9.635,
+ "cgroup": "/sys/fs/cgroup/system.slice/slurmstepd.scope/job_4151261/step_batch/user/task_0"
+}

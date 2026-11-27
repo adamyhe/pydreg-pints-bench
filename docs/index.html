@@ -123,23 +123,39 @@ ul{padding-left:1.2em;margin:0 0 12px}li{margin-bottom:6px}
 
 <div class="wrap" style="padding-top:0">
   <h2>Run time</h2>
-  <p>PINTS is faster overall: about 2.9 h against 4.6 h for all 15 libraries. On the deepest run-on libraries the two are about even. On TSS assays PINTS is 4–9× faster. pydreg uses far less memory: PINTS grows with depth, up to 58 GB.</p>
+  <p>PINTS is faster overall: about 2.9 h against 4.6 h for all 15 libraries. On the deepest run-on libraries the two are about even. On TSS assays PINTS is 4–9× faster. pydreg uses far less memory (next table).</p>
   <div class="scroll"><table>
-    <thead><tr><th>Library</th><th>pydreg wall</th><th>PINTS wall</th><th>pydreg RAM</th><th>PINTS RAM</th></tr></thead>
+    <thead><tr><th>Library</th><th>pydreg wall</th><th>PINTS wall</th></tr></thead>
     <tbody>
-      <tr><td>K562 PRO-seq G1 (deepest)</td><td class="n">44 min</td><td class="n">46 min</td><td class="n">8 GB</td><td class="n">58 GB</td></tr>
-      <tr><td>K562 PRO-seq G7</td><td class="n">16</td><td class="n">18</td><td class="n">5</td><td class="n">26</td></tr>
-      <tr><td>GM12878 GRO-seq</td><td class="n">36</td><td class="n">22</td><td class="n">7</td><td class="n">32</td></tr>
-      <tr><td>Jurkat leChRO-seq</td><td class="n">17</td><td class="n">19</td><td class="n">5</td><td class="n">34</td></tr>
-      <tr><td>Jurkat PRO-seq / ChRO-seq 1 / 2</td><td class="n">15 / 15 / 17</td><td class="n">13 / 7 / 12</td><td class="n">5</td><td class="n">17–25</td></tr>
-      <tr><td>K562 GRO-seq G2</td><td class="n">15</td><td class="n">10</td><td class="n">5</td><td class="n">16</td></tr>
-      <tr><td>HCT116 PRO-seq</td><td class="n">18</td><td class="n">7</td><td class="n">5</td><td class="n">15</td></tr>
-      <tr><td>A549 PRO-seq</td><td class="n">10</td><td class="n">4</td><td class="n">4</td><td class="n">9</td></tr>
-      <tr><td>TSS assays (PRO-cap ×3, GRO-cap, CAGE)</td><td class="n">6–24</td><td class="n">0.6–4</td><td class="n">3–4</td><td class="n">2–8</td></tr>
-      <tr><td><b>Total, 15 libraries</b></td><td class="n"><b>4.6 h</b></td><td class="n"><b>2.9 h</b></td><td></td><td></td></tr>
+      <tr><td>K562 PRO-seq G1 (deepest)</td><td class="n">44 min</td><td class="n">46 min</td></tr>
+      <tr><td>K562 PRO-seq G7</td><td class="n">16</td><td class="n">18</td></tr>
+      <tr><td>GM12878 GRO-seq</td><td class="n">36</td><td class="n">22</td></tr>
+      <tr><td>Jurkat leChRO-seq</td><td class="n">17</td><td class="n">19</td></tr>
+      <tr><td>Jurkat PRO-seq / ChRO-seq 1 / 2</td><td class="n">15 / 15 / 17</td><td class="n">13 / 7 / 12</td></tr>
+      <tr><td>K562 GRO-seq G2</td><td class="n">15</td><td class="n">10</td></tr>
+      <tr><td>HCT116 PRO-seq</td><td class="n">18</td><td class="n">7</td></tr>
+      <tr><td>A549 PRO-seq</td><td class="n">10</td><td class="n">4</td></tr>
+      <tr><td>TSS assays (PRO-cap ×3, GRO-cap, CAGE)</td><td class="n">6–24</td><td class="n">0.6–4</td></tr>
+      <tr><td><b>Total, 15 libraries</b></td><td class="n"><b>4.6 h</b></td><td class="n"><b>2.9 h</b></td></tr>
     </tbody>
   </table></div>
-  <p class="meta">Wall time and peak resident memory from <code>/usr/bin/time -v</code>, one run each on shared cbsubscb nodes. pydreg ran on one Tesla P100 with 16 CPUs; PINTS on 16 CPU threads. pydreg's time covers scoring every candidate site plus peak calling. CPU-only pydreg was not timed.</p>
+  <p class="meta">Wall time from <code>/usr/bin/time -v</code>, one run each on shared cbsubscb nodes. pydreg ran on one Tesla P100 with 16 CPUs; PINTS on 16 CPU threads. pydreg's time covers scoring every candidate site plus peak calling. CPU-only pydreg was not timed.</p>
+
+  <h3 style="margin:24px 0 8px">Memory</h3>
+  <p>Peak memory footprint (PSS, summed over the process tree, so pages shared between PINTS's forked workers count once), sampled every second on the two K562 PRO-seq libraries with <code>scripts/08_memprof.py</code>.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Library</th><th>pydreg</th><th>PINTS <code>--debug</code>, 16 threads (as benchmarked)</th><th>PINTS, 16 threads</th><th>PINTS <code>--debug</code>, 4 threads</th></tr></thead>
+    <tbody>
+      <tr><td>K562 PRO-seq G1 (deepest, ~190M reads/strand)</td><td class="n">8.4 GB</td><td class="n">80 GB</td></tr>
+      <tr><td>K562 PRO-seq G7 (~14M reads/strand)</td><td class="n">6.4 GB</td><td class="n">30 GB</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><b>PINTS's memory grows with depth and through the run</b>, to about 31 GB on G1 by the end of the genome scan, then peaks in the last few minutes while results are assembled.</li>
+    <li><b><code>--debug</code> roughly doubles the peak</b> (G1 80 vs 42 GB). This benchmark needed it to score every PINTS candidate, but routine PINTS runs don't use it.</li>
+    <li><b>Fewer threads barely help:</b> 4 threads cut G1's peak from 80 to 63 GB, because one process holds 58 GB, and they doubled the run time (93 vs 48 min).</li>
+    <li>pydreg's footprint is 6–8 GB. Slurm's MaxRSS reported up to 90 GB for it, because MaxRSS counts each shared page once per worker process. Likewise, <code>/usr/bin/time</code> reports only the largest single process, which understates PINTS (58 of 80 GB on G1).</li>
+  </ul>
 
   <h2>How it was scored</h2>
   <ul>
