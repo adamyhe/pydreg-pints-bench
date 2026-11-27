@@ -8,9 +8,13 @@ __pycache__/
 data/
 # upstream clones (dREG, PINTS_analysis); see BENCHMARK.md for sources
 external/
-logs/
+logs/*
+!logs/.gitkeep
 
 # large outputs: caller output (11 GB) and per-element score dumps
 results/calls/
+
+# downloaded kentUtils binaries (scripts/00_setup_tools.sh)
+tools/
 results/bootstrap/*/element_scores.tsv.gz
 config/site.env

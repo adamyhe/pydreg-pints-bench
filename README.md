@@ -44,7 +44,8 @@ In short:
 ```
 config/libraries.tsv     libraries: phase, cell, assay, genome, dREG role, PINTS exp type, bigWig sources
 config/site.env.example  site settings (copy to config/site.env)
-scripts/00*_fetch*.sh    downloads, run on a login node (internet needed)
+resources/               the one input that is not downloadable (K562 GRO-cap HMM TREs, gzipped)
+scripts/00_fetch_all.sh  downloads every other input into data/ (runs 00_setup_tools, 00_fetch_data, 00b, 00c)
 scripts/01*_build_labels*.py, 03_evaluate.py, 04_summarize.py, 05_bootstrap.py, 06_report.py, 07_gc_diagnostic.py
 slurm/                   one sbatch script per stage, sub.sh (submit wrapper), submit_*.sh (dependency chains)
 src/ppbench/             library code: labels, calls, evaluate, bootstrap, gc, genome
@@ -54,7 +55,8 @@ results/                 eval/ (point metrics), bootstrap/*/ci.tsv (intervals), 
 
 Not in the repo, rebuilt by the scripts:
 
-* `data/`: libraries, references and built labels;
+* `data/`: libraries, references and built labels, about 4 GB, from `scripts/00_fetch_all.sh` and the label stages;
+* `tools/kent/`: kentUtils binaries, downloaded only if not already installed;
 * `results/calls/`: caller output, about 11 GB;
 * `results/bootstrap/*/element_scores.tsv.gz`.
 
@@ -64,10 +66,11 @@ Not in the repo, rebuilt by the scripts:
   analysis stack into `.venv/`.
 * An NVIDIA GPU with CUDA for pydreg's CuPy backend. The original runs used one Tesla P100 per library.
 * About 64 GB of RAM for PINTS on the deepest libraries. It peaked at 58 GB on K562 PRO-seq G1.
-* kentUtils on `PATH` or at `KENT_BIN`: `bigWigToBedGraph`, `bedGraphToBigWig`, `bigWigMerge`, `bigWigInfo`,
-  `twoBitToFa`, `liftOver`.
+* kentUtils: `bigWigToBedGraph`, `bedGraphToBigWig`, `bigWigMerge`, `bigWigInfo`, `twoBitToFa`, `liftOver`.
+  If they aren't on `PATH` or at `KENT_BIN`, `scripts/00_setup_tools.sh` downloads UCSC's static Linux x86_64
+  builds into `tools/kent/`. These are free for academic and non-profit use; commercial use needs a UCSC licence.
 * Slurm, for the provided job scripts. Each stage is also a plain Python script you can run directly.
-* `curl` and `gzip`.
+* `curl`, `gzip` and internet access on the node that runs the fetch scripts.
 
 ## Configuration
 
@@ -84,46 +87,41 @@ Every setting is optional. Python reads environment variables first, then `confi
 | `PPB_GPU_SBATCH_ARGS` | none | extra flags for GPU jobs, e.g. `--partition=gpu --gres=gpu:a100:1` |
 | `PPB_SLURM_LOGS` | `logs/slurm/` | job logs |
 | `PPB_SCRATCH_ROOT` | `/workdir/$USER` | node-local job scratch (falls back to `$TMPDIR`) |
-| `KENT_BIN` | `PATH`, then `/programs/kentUtils/bin` | kentUtils binaries |
-| `DREG_K562_HMM_BED`, `GM12878_UW_DHS_BED` | none (public fallbacks) | the two non-public inputs, below |
+| `KENT_BIN` | `PATH`, then `/programs/kentUtils/bin`, then `tools/kent/` | kentUtils binaries |
 
 The sbatch headers carry the partitions and GPU type of the original cluster (Cornell BioHPC cbsubscb). Flags in
 `PPB_SBATCH_ARGS` and `PPB_GPU_SBATCH_ARGS`, or flags passed to `slurm/sub.sh`, override them.
 
-### Inputs from Danko lab storage
+### Inputs
 
-Two dREG-paper files were read from Danko lab storage. Only the first is actually unavailable publicly.
+Everything is downloaded from public sources, except one file shipped in the repo:
 
-| Setting | File | What it feeds | Fallback when unset |
-|---|---|---|---|
-| `DREG_K562_HMM_BED` | `hg19.k562.new_hmm2b.post2.bed`: K562 GRO-cap HMM TREs | A manifest check that the dREG negative-rebuild recipe reproduces the released K562 negatives; also part of the TSS signal defining K562 TSS-silent DHS negatives | The check is skipped; K562 TSS-silent negatives use GRO-cap signal only |
-| `GM12878_UW_DHS_BED` | `uw.merge.narrowPeak.bed`: GM12878 UW DNase peaks | Every GM12878 DHS-based label: rebuilt dREG negatives, H3K27ac/DHS labels, quiet negatives, TSS-silent DHSs, and the restriction of HiDRA negatives to accessible sites | Rebuilt from the public UCSC UW DNase GM12878 replicates 1 + 2 (`wgEncodeUwDnaseGm12878PkRep{1,2}`). It is exactly their merged union: all 164,206 intervals match |
+* **Downloaded:** ENCODE, GEO, UCSC, FANTOM5, ChIP-Atlas, the dREG data hub and the PINTS paper's
+  supplementary tables.
+* **`resources/K562_grocap_hmm.hg19.bed.gz`:** the dREG paper's K562 GRO-cap HMM regulatory elements,
+  `hg19.k562.new_hmm2b.post2.bed` from the Danko lab, which isn't available anywhere else.
+  * It feeds a check that the dREG negative-rebuild recipe reproduces the released K562 negatives.
+  * It is also part of the TSS signal behind the K562 TSS-silent DHS negatives.
 
-Without the K562 HMM file, only the K562 TSS-silent DHS negatives change slightly, so those rows won't match
-`results/` exactly. All other inputs are public: ENCODE, GEO, UCSC, FANTOM5, ChIP-Atlas, the dREG data hub, and the
-PINTS paper's supplementary tables.
+The dREG scripts' GM12878 UW DNase file (`uw.merge.narrowPeak.bed`) is rebuilt from the public UCSC replicates
+1 + 2 (`wgEncodeUwDnaseGm12878PkRep{1,2}`). All 164,206 intervals match the original.
 
 ## Running
 
-Each phase is fetch → labels and callers → evaluate → bootstrap → report. The `submit_*.sh` scripts chain the
+Fetch everything once, then for each phase: labels and callers → evaluate → bootstrap → report. The `submit_*.sh` scripts chain the
 Slurm stages with dependencies.
 
 ```bash
+git clone https://github.com/adamyhe/pydreg-pints-bench && cd pydreg-pints-bench
 uv sync
-cp config/site.env.example config/site.env            # edit for your site
+cp config/site.env.example config/site.env            # optional: Slurm account, partitions, scratch
+bash scripts/00_fetch_all.sh                           # all inputs -> data/ (~4 GB; login node with internet)
 
-# phase 1: K562 + GM12878, hg19
-bash scripts/00_fetch_data.sh 2>&1 | tee logs/00_fetch_data.log
 bash slurm/sub.sh slurm/00_gpu_smoke.sbatch            # check CuPy sees the GPU
-bash slurm/submit_phase1.sh
-
-# phase 2: HCT116, A549, K562 PRO-cap, hg38
-bash scripts/00b_fetch_phase2.sh
-bash slurm/submit_phase2.sh
-
-# phase 3: Jurkat, hg19
-bash scripts/00c_fetch_jurkat.sh
-bash slurm/submit_phase3.sh
+bash slurm/submit_phase1.sh                            # phase 1: K562 + GM12878, hg19
+bash slurm/submit_phase2.sh                            # phase 2: HCT116, A549, K562 PRO-cap, hg38
+bash slurm/submit_phase3.sh                            # phase 3: Jurkat, hg19
+# submit each phase after the previous one has finished: phase 2 re-evaluates the phase-1 libraries
 
 # re-evaluate and bootstrap all 15 libraries (TSS-silent negatives, GC and CpG conditions), then the report
 bash slurm/submit_rerun_p12.sh

@@ -28,6 +28,7 @@ done
 UCSC=https://hgdownload.soe.ucsc.edu/goldenPath
 get $UCSC/hg19/bigZips/hg19.chrom.sizes                     "$DATA/ref/hg19.chrom.sizes"
 get $UCSC/hg38/bigZips/hg38.chrom.sizes                     "$DATA/ref/hg38.chrom.sizes"
+get $UCSC/hg19/bigZips/hg19.2bit                            "$DATA/ref/hg19.2bit"      # ~0.8 GB, GC content
 get $UCSC/hg19/liftOver/hg19ToHg38.over.chain.gz            "$DATA/ref/hg19ToHg38.over.chain.gz"
 get $UCSC/hg38/liftOver/hg38ToHg19.over.chain.gz            "$DATA/ref/hg38ToHg19.over.chain.gz"
 get https://github.com/Boyle-Lab/Blacklist/raw/master/lists/hg19-blacklist.v2.bed.gz "$DATA/ref/hg19-blacklist.v2.bed.gz"
@@ -56,31 +57,25 @@ for f in k562.positive.bed.gz k562.negative.bed.gz K562.positive.bed.gz GM12878.
 done
 # DHS used for dREG negatives (Duke + UW, hg19). K562 from UCSC (the files dREG's scripts name);
 # GM12878 UW = the merged file dREG's scripts name (uw.merge.narrowPeak.bed). It is exactly the merged union of
-#   the public UCSC UW DNase GM12878 replicates 1+2 (checked 2026-11-26: identical intervals), so it is rebuilt
-#   from those unless $GM12878_UW_DHS_BED points at a local copy;
+#   the public UCSC UW DNase GM12878 replicates 1+2 (checked 2026-11-26: all 164,206 intervals identical);
 # GM12878 Duke from UCSC.
 ENCDCC=$UCSC/hg19/encodeDCC
 get $ENCDCC/wgEncodeOpenChromDnase/wgEncodeOpenChromDnaseK562PkV2.narrowPeak.gz   "$DATA/ref/dhs/K562_Duke.hg19.narrowPeak.gz"
 get $ENCDCC/wgEncodeUwDgf/wgEncodeUwDgfK562Pk.narrowPeak.gz                      "$DATA/ref/dhs/K562_UW.hg19.narrowPeak.gz"
 get $ENCDCC/wgEncodeOpenChromDnase/wgEncodeOpenChromDnaseGm12878Pk.narrowPeak.gz "$DATA/ref/dhs/GM12878_Duke.hg19.narrowPeak.gz"
 if [[ ! -s "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz" ]]; then
-    if [[ -n "$GM12878_UW_DHS_BED" ]]; then
-        gzip -c "$GM12878_UW_DHS_BED" > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
-    else
-        for r in 1 2; do get $ENCDCC/wgEncodeUwDnase/wgEncodeUwDnaseGm12878PkRep$r.narrowPeak.gz "$DATA/ref/dhs/GM12878_UW_rep$r.hg19.narrowPeak.gz"; done
-        zcat "$DATA"/ref/dhs/GM12878_UW_rep{1,2}.hg19.narrowPeak.gz | cut -f1-3 | LC_ALL=C sort -k1,1 -k2,2n \
-            | awk 'BEGIN{OFS="\t"} $1!=c || $2>e {if (c!="") print c,s,e; c=$1; s=$2; e=$3; next} {if ($3>e) e=$3} END{print c,s,e}' \
-            | gzip -c > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
-    fi
+    for r in 1 2; do get $ENCDCC/wgEncodeUwDnase/wgEncodeUwDnaseGm12878PkRep$r.narrowPeak.gz "$DATA/ref/dhs/GM12878_UW_rep$r.hg19.narrowPeak.gz"; done
+    zcat "$DATA"/ref/dhs/GM12878_UW_rep{1,2}.hg19.narrowPeak.gz | cut -f1-3 | LC_ALL=C sort -k1,1 -k2,2n \
+        | awk 'BEGIN{OFS="\t"} $1!=c || $2>e {if (c!="") print c,s,e; c=$1; s=$2; e=$3; next} {if ($3>e) e=$3} END{print c,s,e}' \
+        | gzip -c > "$DATA/ref/dhs/GM12878_UW.hg19.narrowPeak.gz"
 fi
 # GM12878 GRO-cap (stands in for the GRO-cap HMM calls when rebuilding GM12878 negatives)
 get $GEO/GSM1480nnn/GSM1480323/suppl/GSM1480323_GM12878_GROcap_wTAP_plus.bigWig  "$DATA/ref/GM12878_GROcap.pl.bw"
 get $GEO/GSM1480nnn/GSM1480323/suppl/GSM1480323_GM12878_GROcap_wTAP_minus.bigWig "$DATA/ref/GM12878_GROcap.mn.bw"
-# K562 GRO-cap HMM calls used by dREG (not public; $DREG_K562_HMM_BED in config/site.env). Used for the
-# K562 negative-rebuild check and, with GRO-cap signal, the K562 TSS-silent DHS negatives. Optional.
+# K562 GRO-cap HMM TREs used by dREG (hg19.k562.new_hmm2b.post2.bed, Danko lab; not otherwise public). Shipped in
+# resources/. Used for the K562 negative-rebuild check and, with GRO-cap signal, the K562 TSS-silent DHS negatives.
 if [[ ! -s "$DATA/ref/K562_grocap_hmm.hg19.bed" ]]; then
-    if [[ -n "$DREG_K562_HMM_BED" ]]; then cp "$DREG_K562_HMM_BED" "$DATA/ref/K562_grocap_hmm.hg19.bed"
-    else echo "DREG_K562_HMM_BED not set: skipping (K562 silent negatives use GRO-cap signal only)"; fi
+    zcat "$PROJ/resources/K562_grocap_hmm.hg19.bed.gz" > "$DATA/ref/K562_grocap_hmm.hg19.bed"
 fi
 
 # ---- dREG auxiliary labels (Wang 2019 Fig 1B; Danko 2015 Fig 1b): ENCODE hg19 Broad H3K27ac + ChromHMM ----

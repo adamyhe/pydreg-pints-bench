@@ -37,10 +37,11 @@ SITE = _site_env()
 
 
 def kent(tool: str) -> str:
-    """Path to a kentUtils binary: $KENT_BIN, else PATH, else /programs/kentUtils/bin."""
+    """Path to a kentUtils binary: $KENT_BIN, else PATH, else /programs/kentUtils/bin, else tools/kent."""
     if SITE.get("KENT_BIN"):
         return str(Path(SITE["KENT_BIN"]) / tool)
-    return shutil.which(tool) or f"/programs/kentUtils/bin/{tool}"
+    site = Path("/programs/kentUtils/bin") / tool
+    return shutil.which(tool) or (str(site) if site.exists() else str(PROJ / "tools" / "kent" / tool))
 
 
 LIFTOVER = SITE.get("LIFTOVER_BIN") or kent("liftOver")

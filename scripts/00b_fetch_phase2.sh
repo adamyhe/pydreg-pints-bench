@@ -71,6 +71,7 @@ done
 # ---- GM12878 PINTS-paper-style labels ----
 # HiDRA (Wang 2018, GSE104001; GM12878 ATAC fragments in a STARR-seq vector), hg19 fragment-group counts
 mkdir -p "$DATA/ref/hidra" "$DATA/ref/cage" "$DATA/ref/rna"
+get https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.2bit "$DATA/ref/hg38.2bit"   # ~0.8 GB, GC content
 get https://ftp.ncbi.nlm.nih.gov/geo/series/GSE104nnn/GSE104001/suppl/GSE104001_HiDRA_counts_per_fragmentgroup.txt.gz \
     "$DATA/ref/hidra/GSE104001_HiDRA_counts_per_fragmentgroup.txt.gz"
 # GM12878 nAnT-iCAGE (same FANTOM5/PINTS series as K562: GSE118075), hg19 CTSS
