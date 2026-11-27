@@ -99,7 +99,7 @@ Everything is downloaded from public sources, except one file shipped in the rep
 * **Downloaded:** ENCODE, GEO, UCSC, FANTOM5, ChIP-Atlas, the dREG data hub and the PINTS paper's
   supplementary tables.
 * **`resources/K562_grocap_hmm.hg19.bed.gz`:** the dREG paper's K562 GRO-cap HMM regulatory elements,
-  `hg19.k562.new_hmm2b.post2.bed` from the Danko lab, which isn't available anywhere else.
+  `hg19.k562.new_hmm2b.post2.bed`, which isn't available anywhere else. The Danko lab (Cornell) shares it here.
   * It feeds a check that the dREG negative-rebuild recipe reproduces the released K562 negatives.
   * It is also part of the TSS signal behind the K562 TSS-silent DHS negatives.
 
@@ -150,3 +150,9 @@ These cover:
 * condition handling.
 
 Some tests use the built label tables under `data/`.
+
+## License
+
+The code is released under the [MIT License](LICENSE). Downloaded third-party data keep their original terms. The
+K562 GRO-cap HMM calls in `resources/` come from the Danko lab; please cite the dREG papers (Danko et al. 2015,
+Nature Methods; Wang et al. 2019, Genome Research) if you use them.

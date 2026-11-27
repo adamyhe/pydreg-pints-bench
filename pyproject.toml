@@ -1,6 +1,7 @@
 [project]
 name = "pydreg-pints-bench"
 version = "0.1.0"
+license = "MIT"
 description = "Assay-matched benchmark of pydreg vs PINTS on run-on and TSS data"
 requires-python = ">=3.12"
 dependencies = [
