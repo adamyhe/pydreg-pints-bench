@@ -1,5 +1,7 @@
 # pydreg-pints-bench
 
+[![Results page](https://img.shields.io/badge/results-interactive%20page-1f5fa8)](https://adamyhe.github.io/pydreg-pints-bench/)
+
 A benchmark of two callers of transcribed regulatory elements on nascent-transcription data:
 
 * [pydreg](https://pypi.org/project/pydreg/) 1.0.0, a Python port of dREG;
